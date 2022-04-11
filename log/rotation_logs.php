@@ -8,7 +8,7 @@ $today_min_7=$today_min_7->format('d_m_Y'); // Привожу ее в нужны
 $dir = '/var/www/work.alexkirichek/jira_critical_issues/log'; // Выбираю директорию
 $files = scandir($dir, 1); // Смотрю какие файлы есть в директории
 foreach ($files as $file1) { // Перебираю названия файлов
-    if ($file1=='jira_log_'.$yesterday.'.txt') { // Если есть лог по Джире за вчера
+    if ($file1=='jira_log_'.$yesterday.'.txt') { // Если есть лог по Jira за вчера
         $zip = new ZipArchive();
         $zip->open($dir.'/jira_log_' . $yesterday . '.zip', ZipArchive::CREATE); // Создаю архив
         $zip->addFile($dir.'/'.$file1, $file1); // Добавляю в него файл
@@ -18,7 +18,7 @@ foreach ($files as $file1) { // Перебираю названия файлов
     }
 }
 foreach ($files as $file2) {
-    if ($file2=='jira_log_'.$today_min_7.'.zip') { // Если есть архивный лог по джире семидневной давности
+    if ($file2=='jira_log_'.$today_min_7.'.zip') { // Если есть архивный лог по Jira семидневной давности
         unlink($dir.'/jira_log_'.$today_min_7.'.zip'); // Удаляю его
     }
 }
