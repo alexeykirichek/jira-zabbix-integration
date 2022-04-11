@@ -2,7 +2,7 @@
 
 **The English version of the README is available below**
 
-Данный проект представляет собой ПО, позволяющее контролировать наличие запросов от определенного списка пользователей. 
+Данный проект представляет собой ПО, позволяющее отслеживать создание запросов от заданного списка пользователей. 
 
 **Дисклеймер**: код проекта максимально простой. Проект не позиционируется как серьезная разработка. Я понимаю, что многое можно сделать правильнее, лучше, логичнее и т.д. Делалось на этапе обучения и с минимальными временными затратами.
 
@@ -18,7 +18,7 @@
 
 ** Русская версия README доступна выше**
 
-This project is a software that allows you to monitor the availability of requests from a specific list of users. 
+This project is a software that allows you to track the creation of requests from a given list of users. 
 
 **Disclaimer**: The project code is as simple as possible. The project is not positioned as a serious development. I understand that much can be done more correctly, better, more logically, etc. It was done at the training stage and with minimal time costs.
 
