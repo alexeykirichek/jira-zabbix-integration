@@ -1,13 +1,13 @@
-<?php // Функции
-function save_jira_log($body) { // Логирование полученных от Джиры данных
+<?php
+function save_jira_log($body) { // Логирование полученных от Jira данных
     $data_jira_log = new DateTime(); // Сохраняю текущую дату
     $data_jira_log=$data_jira_log->format('d_m_Y'); // Изменяю ее формат
-    $file = $jira_log_path.'/jira_log_'.$data_jira_log.'.txt'; // Создаю путь к файлу с логом
+    $file = $jira_log_path.'/jira_log_'.$data_jira_log.'.log'; // Создаю путь к файлу с логом
     $current = file_get_contents($file); // Открываю файл для получения существующего содержимого или создаю файл, если его нет
     $current .= $body."\n"."---------------------"."\n"; // Пишу в строку полученные данные с разделителем
     file_put_contents($file, $current); // Пишу строку в файл
 }
-function save_issue_data($data) { // Сохранение данных по созданному в Джире запросу
+function save_issue_data($data) { // Сохранение данных по созданному в Jira запросу
     include ('variables.php'); // Переменные
     $issueKeynum = substr($data['issueKey'], 5);
     $mysql_save_issue_data = new mysqli('localhost', $db_login, $db_pass, $db_name); // Подключаюсь к БД
@@ -75,7 +75,7 @@ function save_jira_input_updates($data) { // Сохраняем данные п�
     "'.$data['issueKey'].'");'); // Записываю данные по полученному обновлению в БД
     $mysql_jira_input_updates->query('UPDATE `jira_issue` SET `update_time` = "'.$data['timestamp'].'" WHERE `jira_issue`.`id_issue` = "'.$data['id_issue'].'";'); // Обновляю время последнего изменения задачи в таблице с задачами Jira
 }
-function save_input_changelog_items($data) { // Записываю данные по полученным изменениям в обновлении от Джиры
+function save_input_changelog_items($data) { // Записываю данные по полученным изменениям в обновлении от Jira
     include ('variables.php'); // Подключаю переменные
     $mysql_input_changelog_items = new mysqli('localhost', $db_login, $db_pass, $db_name); // Подключаюсь к БД
     $mysql_input_changelog_items->query('INSERT INTO `jira_input_changelog_items` (`id_input_changelog_item`, 
@@ -100,7 +100,7 @@ function take_email_author_issue($user_id) {
     // Подготовка и отправка запроса в Jira
     $curl = curl_init();
     curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://prontosms.atlassian.net/rest/api/2/user?accountId='.$user_id,
+        CURLOPT_URL => 'https://'.$companyName.'.atlassian.net/rest/api/2/user?accountId='.$user_id,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
