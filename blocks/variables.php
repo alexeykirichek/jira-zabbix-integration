@@ -7,7 +7,7 @@ $db_name = 'jira_critical_issues'; // Название базы данных
 // Jira Service Desk
 $sd_login = ''; // Логин для авторизации в Jira
 $sd_token = ''; // Токен для авторизации в Jira
-$companyName = ''; // Название компании для подстановки в ссылку с проектом
+$companyName = ''; // Название компании для подстановки в ссылку (https://'.$companyName.'.atlassian.net)
 
 // Пути для логирования полученных данных
 $jira_log_path = '/var/www/jira_critical_issues/log'; // От Jira
